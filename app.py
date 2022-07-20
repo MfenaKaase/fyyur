@@ -248,7 +248,7 @@ def show_venue(venue_id):
       "artist_id": show.artist_id,
       "artist_name": show.artist.name,
       "artist_image_link": show.artist.image_link,
-      "start_time": show.start_time
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')
     })
 
   for show in upcoming_shows_query:
@@ -256,7 +256,7 @@ def show_venue(venue_id):
       "artist_id": show.artist_id,
       "artist_name": show.artist.name,
       "artist_image_link": show.artist.image_link,
-      "start_time": show.start_time    
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')    
     })
 
   data = {
@@ -464,7 +464,7 @@ def show_artist(artist_id):
       "venue_id": show.venue_id,
       "venue_name": show.venue.name,
       "artist_image_link": show.venue.image_link,
-      "start_time": show.start_time
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')
     })
 
   upcoming_shows_query = db.session.query(Show).join(Venue).filter(Show.artist_id==artist_id).filter(Show.start_time>datetime.now()).all()
@@ -475,7 +475,7 @@ def show_artist(artist_id):
       "venue_id": show.venue_id,
       "venue_name": show.venue.name,
       "artist_image_link": show.venue.image_link,
-      "start_time": show.start_time
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')
     })
 
 
@@ -701,7 +701,7 @@ def shows():
       "artist_id": show.artist_id,
       "artist_name": show.artist.name, 
       "artist_image_link": show.artist.image_link,
-      "start_time": show.start_time
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')
     })
 
   # data=[{
